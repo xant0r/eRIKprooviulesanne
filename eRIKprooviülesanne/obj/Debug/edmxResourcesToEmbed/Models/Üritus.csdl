@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="YritusModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Yritus1ID" Type="Int32" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Osavotjad">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Eesnimi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Perenimi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Isikukood" Type="Int32" Nullable="false" />
+    <Property Name="Makskmisviis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Lisainfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Yritus_ID" Type="Int32" />
+    <Property Name="Yritus1ID" Type="Int32" Nullable="true" />
+    <NavigationProperty Name="Yritus1" Relationship="YritusModel.Yritus1Osavotjad" FromRole="Osavotjad" ToRole="Yritus1" />
+    <Property Name="Yritus1ID1" Type="Int32" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Yritus1">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ürituse_nimi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Toimumisaeg" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Koht" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Lisainfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OsavotjadID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Osavotjads" Relationship="YritusModel.Yritus1Osavotjad" FromRole="Yritus1" ToRole="Osavotjad" />
+  </EntityType>
+  <EntityContainer Name="YritusEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+    <EntitySet Name="Osavotjads" EntityType="Self.Osavotjad" />
+    <EntitySet Name="Yritus1" EntityType="Self.Yritus1" />
+    <AssociationSet Name="Yritus1Osavotjad" Association="YritusModel.Yritus1Osavotjad">
+      <End Role="Yritus1" EntitySet="Yritus1" />
+      <End Role="Osavotjad" EntitySet="Osavotjads" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="Yritus1Osavotjad">
+    <End Type="YritusModel.Yritus1" Role="Yritus1" Multiplicity="0..1" />
+    <End Type="YritusModel.Osavotjad" Role="Osavotjad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Yritus1">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Osavotjad">
+        <PropertyRef Name="Yritus1ID1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,90 @@
+﻿@model IEnumerable<eRIKprooviülesanne.Models.Yritus1>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-xs-11">
+            <p>Akadeemiline vabadus sattus juba sellega löögi alla, kui tulid grandirahad. See tähendab, et teadlane peab lubama „mõistlikke” asju. Sa pead ajama „mõistlikku” juttu. Sa ei saa rahastajatele öelda, et ma olen loll, ma ei taipa sest midagi, aga ma tegelen asjaga. Tuleb hoopis rääkida, kui palju ma tean ja mis tutvused mul on, siis oled õige mees.</p>
+        </div>
+        <div class="col-xs-11">
+            <img src="~/Pictures/pilt.jpg" class="img-responsive" />
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-11">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">Tulevased Üritused</div>
+            <div class="panel-body">
+                <table class="table">
+                    
+                    @foreach (var item in Model)
+                    {
+                        if (item.Toimumisaeg > DateTime.Today)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Ürituse_nimi)
+                                </td>
+                                <td>
+
+                                    @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Toimumisaeg))
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Osavõtjad", "View1", "Osavotjads")
+                                    @Html.ActionLink("X", "Delete", "Osavotjads")
+                                </td>
+                                
+                            </tr>
+                        }                        
+                    }       
+                           
+                </table>
+                <p>@Html.ActionLink("Lisa üritus", "Create")</p> 
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center" ali>Toimunud Üritused</div>
+            <div class="panel-body">
+                <table class="table">
+
+                    @foreach (var item in Model)
+                    {
+                        if (item.Toimumisaeg < DateTime.Today)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Ürituse_nimi)
+                                </td>
+                                <td>
+
+                                    @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Toimumisaeg))
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Osavõtjad", "Create", "Osavotjads")
+                                </td>
+                            </tr>
+                        }
+                    }
+                    
+                </table>
+                <p>@Html.ActionLink("Lisa üritus", "Create")</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

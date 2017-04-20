@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="YritusModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Osavotjads">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Eesnimi" Type="nvarchar(max)" />
+    <Property Name="Perenimi" Type="nvarchar(max)" />
+    <Property Name="Isikukood" Type="int" Nullable="false" />
+    <Property Name="Makskmisviis" Type="nvarchar(max)" />
+    <Property Name="Lisainfo" Type="nvarchar(max)" />
+    <Property Name="Yritus_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Yritus1">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ürituse_nimi" Type="nvarchar(max)" />
+    <Property Name="Toimumisaeg" Type="datetime" Nullable="false" />
+    <Property Name="Koht" Type="nvarchar(max)" />
+    <Property Name="Lisainfo" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_dbo_Osavotjads_dbo_Yritus1_Yritus_ID">
+    <End Role="Yritus1" Type="Self.Yritus1" Multiplicity="0..1" />
+    <End Role="Osavotjads" Type="Self.Osavotjads" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Yritus1">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Osavotjads">
+        <PropertyRef Name="Yritus_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="YritusModelStoreContainer">
+    <EntitySet Name="Osavotjads" EntityType="Self.Osavotjads" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Yritus1" EntityType="Self.Yritus1" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_Osavotjads_dbo_Yritus1_Yritus_ID" Association="Self.FK_dbo_Osavotjads_dbo_Yritus1_Yritus_ID">
+      <End Role="Yritus1" EntitySet="Yritus1" />
+      <End Role="Osavotjads" EntitySet="Osavotjads" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

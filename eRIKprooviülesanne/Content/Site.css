@@ -1,0 +1,164 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+.navbar-nav > li{
+  left:130px;
+ }
+@media (min-width: 1200px) {
+    .container{
+        max-width: 970px;
+        padding-right: -30px;
+        
+    }
+}
+ 
+.navbar-inverse{
+    max-width: 940px;
+    margin-top: -25px !important;
+    
+}
+
+.navbar-nav li a {
+ line-height: 30px;
+}
+
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #000;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+  color: #fff;
+  background-color: #005AA1 !important;
+}
+
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+  color: #fff;
+  background-color: #005AA1 !important;
+}
+
+
+
+.navbar-inverse .navbar-toggle {
+  border-color: #428bca !important;
+}
+
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+  background-color: #428bca !important;
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+  background-color: #428bca !important;
+}
+
+.panel-body {
+  background-color: #fff;
+}
+
+th, td { 
+    width: 250px;
+    color: #B0B0B0;
+}
+
+
+.panel-collapse .panel-heading {
+    background-color: #005AA1;
+    color: #eeeeee;
+    height: 60px;   
+    
+    padding: 0;
+    
+}
+.panel-collapse .panel-body {
+    padding-left: 200px;  
+}
+
+.center-cropped {  
+  width: 700px ;
+  height: 60px;
+  background-position: right;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  padding-right: 0;
+
+  
+}
+
+.panel-container {
+    padding-right: 0px; !important;
+    padding-left: 0 !important;
+    height:60px;
+    margin-left: 0px;
+}
+.abc{
+    height:60px;
+      display:table-cell !important;
+      vertical-align:middle;
+      text-shadow: 1px 1px 1px #B0B0B0;
+      font-size: 20px;
+      line-height: 1px;
+      outline-width: 1px;
+}
+
+.form-horizontal .control-label.text-left{
+    text-align: left;
+}
+
+.btn-primary {
+    background-color: #005AA1;
+
+}
+.text-primary {
+    margin-bottom: 30px;
+}
+
+dl {
+  width: 100%;
+  overflow: hidden !important;
+  
+  padding: 0 !important ;
+  margin: 0 !important;
+}
+dt {
+  float: left !important;
+  width: 30%;
+  
+  
+  padding: 0 !important;
+  margin: 0 !important;
+}
+dd {
+  float: left !important;
+  width: 50%;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+

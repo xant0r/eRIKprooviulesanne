@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="YritusModelStoreContainer" CdmEntityContainer="YritusEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="YritusModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Osavotjads">
+      <EntityTypeMapping TypeName="YritusModel.Osavotjad">
+        <MappingFragment StoreEntitySet="Osavotjads">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Eesnimi" ColumnName="Eesnimi" />
+          <ScalarProperty Name="Perenimi" ColumnName="Perenimi" />
+          <ScalarProperty Name="Isikukood" ColumnName="Isikukood" />
+          <ScalarProperty Name="Makskmisviis" ColumnName="Makskmisviis" />
+          <ScalarProperty Name="Lisainfo" ColumnName="Lisainfo" />
+          <ScalarProperty Name="Yritus_ID" ColumnName="Yritus_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Yritus1">
+      <EntityTypeMapping TypeName="YritusModel.Yritus1">
+        <MappingFragment StoreEntitySet="Yritus1">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Ürituse_nimi" ColumnName="Ürituse_nimi" />
+          <ScalarProperty Name="Toimumisaeg" ColumnName="Toimumisaeg" />
+          <ScalarProperty Name="Koht" ColumnName="Koht" />
+          <ScalarProperty Name="Lisainfo" ColumnName="Lisainfo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

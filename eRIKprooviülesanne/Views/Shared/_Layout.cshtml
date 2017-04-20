@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Proovitöö</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+
+    <div class="container">
+    <div class="navbar navbar-inverse">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href='@Url.Action("Index", "Yritused")'>
+                <img img src='@Url.Content("~/Pictures/logo.svg")' hspace="20" vspace="10" />
+            </a>        
+        </div>
+        <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "NewIndex" ? "active" : "")">@Html.ActionLink("Avaleht", "NewIndex", "Yritus1")</li>
+                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Create" ? "active" : "")">@Html.ActionLink("Ürituste Lisamine", "Create", "Yritus1")</li>
+            </ul>
+            <a class="navbar-right">
+                <span>
+                    <img src="~/Pictures/symbol.svg" width="50" height="50" hspace="20" vspace="5" />
+                </span>
+            </a>
+        </div>
+    </div>
+</div>
+    <div class="container body-content">
+        @RenderBody()
+       
+        <footer>            
+            <div class="panel panel-danger">                
+                <div class="panel-footer">
+                    <table class="table-responsive">
+                        <thead>
+                            <tr>
+
+                                <th>Erakliendi tugi</th>
+                                <th>Ärikliendi tugi</th>
+                                <th>Seadmetugi</th>
+                                <th>Kontakt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+
+                                <td>6 666 666 E-P 07.00-23.00</td>
+                                <td>6 666 666 E-P 07.00-23.00</td>
+                                <td>6 666 666 E-P 07.00-23.00</td>
+                                <td>Pärnu maantee 238</td>
+                            </tr>
+                            <tr>
+
+                                <td>email@email.ee</td>
+                                <td>email@email.ee</td>
+                                <td>email@email.ee</td>
+                                <td>E-L 10.00-21.00</td>
+                            </tr>
+                            <tr>
+
+                                <td>6 666 665 (fax)</td>
+                                <td>6 666 665 (fax)</td>
+                                <td>6 666 665 (fax)</td>
+                                <td>P 10.00-15.00</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+</footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

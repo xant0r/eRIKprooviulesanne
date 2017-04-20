@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="YritusModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Osavotjads">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Eesnimi" Type="nvarchar(max)" />
+          <Property Name="Perenimi" Type="nvarchar(max)" />
+          <Property Name="Isikukood" Type="int" Nullable="false" />
+          <Property Name="Makskmisviis" Type="nvarchar(max)" />
+          <Property Name="Lisainfo" Type="nvarchar(max)" />
+          <Property Name="Yritus_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Yritus1">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ürituse_nimi" Type="nvarchar(max)" />
+          <Property Name="Toimumisaeg" Type="datetime" Nullable="false" />
+          <Property Name="Koht" Type="nvarchar(max)" />
+          <Property Name="Lisainfo" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_dbo_Osavotjads_dbo_Yritus1_Yritus_ID">
+          <End Role="Yritus1" Type="Self.Yritus1" Multiplicity="0..1" />
+          <End Role="Osavotjads" Type="Self.Osavotjads" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yritus1">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Osavotjads">
+              <PropertyRef Name="Yritus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="YritusModelStoreContainer">
+          <EntitySet Name="Osavotjads" EntityType="Self.Osavotjads" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yritus1" EntityType="Self.Yritus1" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Osavotjads_dbo_Yritus1_Yritus_ID" Association="Self.FK_dbo_Osavotjads_dbo_Yritus1_Yritus_ID">
+            <End Role="Yritus1" EntitySet="Yritus1" />
+            <End Role="Osavotjads" EntitySet="Osavotjads" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="YritusModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Osavotjad">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Eesnimi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Perenimi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Isikukood" Type="Int32" Nullable="false" />
+          <Property Name="Makskmisviis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Lisainfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Yritus_ID" Type="Int32" />
+          <NavigationProperty Name="Yritus1" Relationship="Self.FK_dbo_Osavotjads_dbo_Yritus1_Yritus_ID" FromRole="Osavotjads" ToRole="Yritus1" />
+        </EntityType>
+        <EntityType Name="Yritus1">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ürituse_nimi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Toimumisaeg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Koht" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Lisainfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Osavotjads" Relationship="Self.FK_dbo_Osavotjads_dbo_Yritus1_Yritus_ID" FromRole="Yritus1" ToRole="Osavotjads" />
+        </EntityType>
+        <Association Name="FK_dbo_Osavotjads_dbo_Yritus1_Yritus_ID">
+          <End Role="Yritus1" Type="Self.Yritus1" Multiplicity="0..1" />
+          <End Role="Osavotjads" Type="Self.Osavotjad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yritus1">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Osavotjads">
+              <PropertyRef Name="Yritus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="YritusEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Osavotjads" EntityType="Self.Osavotjad" />
+          <EntitySet Name="Yritus1" EntityType="Self.Yritus1" />
+          <AssociationSet Name="FK_dbo_Osavotjads_dbo_Yritus1_Yritus_ID" Association="Self.FK_dbo_Osavotjads_dbo_Yritus1_Yritus_ID">
+            <End Role="Yritus1" EntitySet="Yritus1" />
+            <End Role="Osavotjads" EntitySet="Osavotjads" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="YritusModelStoreContainer" CdmEntityContainer="YritusEntities1">
+          <EntitySetMapping Name="Osavotjads">
+            <EntityTypeMapping TypeName="YritusModel.Osavotjad">
+              <MappingFragment StoreEntitySet="Osavotjads">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Eesnimi" ColumnName="Eesnimi" />
+                <ScalarProperty Name="Perenimi" ColumnName="Perenimi" />
+                <ScalarProperty Name="Isikukood" ColumnName="Isikukood" />
+                <ScalarProperty Name="Makskmisviis" ColumnName="Makskmisviis" />
+                <ScalarProperty Name="Lisainfo" ColumnName="Lisainfo" />
+                <ScalarProperty Name="Yritus_ID" ColumnName="Yritus_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yritus1">
+            <EntityTypeMapping TypeName="YritusModel.Yritus1">
+              <MappingFragment StoreEntitySet="Yritus1">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Ürituse_nimi" ColumnName="Ürituse_nimi" />
+                <ScalarProperty Name="Toimumisaeg" ColumnName="Toimumisaeg" />
+                <ScalarProperty Name="Koht" ColumnName="Koht" />
+                <ScalarProperty Name="Lisainfo" ColumnName="Lisainfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

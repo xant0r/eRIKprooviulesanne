@@ -1,0 +1,132 @@
+﻿@model IEnumerable<eRIKprooviülesanne.ViewModels.ViewModelVM>
+
+
+
+<div class="container-fluid">
+
+    <div class="panel panel-collapse">
+        <div class="panel-heading">
+            <div class="container-fluid">
+                <div class="col-xs-3 text-left">
+                    <h3 class="panel-title abc">
+                        Osavõtjad
+                    </h3>
+                </div>
+                <div class="col-xs-3 pull-right center-cropped ">
+                    <img src="~/Pictures/libled.jpg" class="img-responsive" />
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="panel-body">
+            <h4 class="text-primary">Osavõtjad</h4>
+            <div>
+                                  
+                        
+                        
+
+                    @foreach (var item in Model)
+                    {
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Yritus1.Ürituse_nimi)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.Yritus1.Ürituse_nimi)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Yritus1.Toimumisaeg)
+                            </dt>
+                            <dd>
+                                @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Yritus1.Toimumisaeg))
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Yritus1.Koht)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.Yritus1.Koht)
+                            </dd>
+                            <dl class="dl-horizontal">                                
+                                <dd>
+                                    @Html.DisplayFor(model => item.Osavotjad.Eesnimi)
+                                </dd>                              
+                                <dd>
+                                    @Html.DisplayFor(model => item.Osavotjad.Isikukood)
+                                </dd>
+                                <dd>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Yritus1.ID }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.Yritus1.ID }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Yritus1.ID })
+                                </dd>
+                            </dl>
+                        </dl>
+                    }
+@foreach (var item in Model)
+{
+                
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <h4>Osavotjad</h4>
+                        
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => item.Osavotjad.Eesnimi, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => item.Osavotjad.Eesnimi, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => item.Osavotjad.Eesnimi, "", new { @class = "text-danger" })
+                            </div>
+                        </div>                        
+                        <div class="form-group">
+                            @Html.LabelFor(model => item.Osavotjad.Perenimi, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => item.Osavotjad.Perenimi, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => item.Osavotjad.Perenimi, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => item.Osavotjad.Isikukood, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => item.Osavotjad.Isikukood, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => item.Osavotjad.Isikukood, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => item.Osavotjad.Makskmisviis, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => item.Osavotjad.Makskmisviis, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => item.Osavotjad.Makskmisviis, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => item.Osavotjad.Lisainfo, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => item.Osavotjad.Lisainfo, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => item.Osavotjad.Lisainfo, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button type="button" onclick="location.href='@Url.Action("NewIndex", "Yritus1")'" class="btn btn-secondary">Tagasi</button>
+                                <button type="submit" onclick="location.href='@Url.Action("Create", "Osavotjads")'" class="btn btn-primary">Lisa</button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                
+
+                
+
+                }
+            </div>        
+        </div>
+    </div>
+</div>

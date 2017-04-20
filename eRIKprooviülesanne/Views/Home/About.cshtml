@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Use this area to provide additional information.</p>
+
+<script runat="server">
+    protected void RadioButton_CheckedChanged(object sender,System.EventArgs e) {
+        if (RadioButton1.Checked == true)
+        {
+            Label1.Text = "Your selected item is : " +
+                RadioButton1.Text;
+        }
+        else {
+            Label1.Text = "Your selected item is : " +
+                RadioButton2.Text;
+        }
+    }
+</script>
+
+
+<head runat="server">
+    <title>How to use RadioButton control in asp.net</title>
+</head>
+<body style="padding:25px">
+    <form id="main_form" runat="server">
+        <div>
+            <asp:Table ID="main_table" CssClass="table" runat="server" GridLines="Both" Height="100%" Width="100%">
+                <asp:TableRow ID="row_head" Height="100px">
+                    <asp:TableCell ID="logo_cell" Width="20%">
+
+                    </asp:TableCell>
+                    <asp:TableCell Width="65%">
+                        <asp:Label ID="label_heading" Text="ONLINE TICKET BOOKING REQUEST PORTAL" CssClass="label" runat="server"></asp:Label>
+                    </asp:TableCell>
+                    <asp:TableCell Width="15%">
+                        <div id="clockDisplay" class="clockStyle"></div>
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow ID="row_main" Height="500px">
+                    <asp:TableCell>
+                        <asp:RadioButtonList ID="menu_list" CssClass="list" runat="server" RepeatDirection="Vertical" OnSelectedIndexChanged="menu_list_SelectedIndexChanged" AutoPostBack="true">
+                            <asp:ListItem Value="profile" Text="Edit User Profile"></asp:ListItem>
+                            <asp:ListItem Value="booking" Text="Request New Booking"></asp:ListItem>
+                            <asp:ListItem Value="status" Text="View Existing Booking Status"></asp:ListItem>
+                            <asp:ListItem Value="approval" Text="Request Awaiting Your Approval"></asp:ListItem>
+                            <asp:ListItem Value="cancel" Text="Cancel Existing Booking"></asp:ListItem>
+                        </asp:RadioButtonList>
+                    </asp:TableCell>
+                    <asp:TableCell ID="master_cell" ColumnSpan="2" runat="server">
+                        <div id="master_cell_div" runat="server"></div>
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow ID="row_foot" Height="10%">
+                    <asp:TableCell ColumnSpan="3">
+                        <center>
+                            
+                        </center>
+                    </asp:TableCell>
+                </asp:TableRow>
+            </asp:Table>
+        </div>
+    </form>
+</body>

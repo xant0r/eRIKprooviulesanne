@@ -1,0 +1,50 @@
+﻿@model eRIKprooviülesanne.Models.Yritus1
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Yritus1</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ürituse_nimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ürituse_nimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Toimumisaeg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Toimumisaeg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Koht)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Koht)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lisainfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lisainfo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="YritusModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Osavotjad">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Eesnimi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Perenimi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Isikukood" Type="Int32" Nullable="false" />
+    <Property Name="Makskmisviis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Lisainfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Yritus_ID" Type="Int32" />
+    <NavigationProperty Name="Yritus1" Relationship="Self.FK_dbo_Osavotjads_dbo_Yritus1_Yritus_ID" FromRole="Osavotjads" ToRole="Yritus1" />
+  </EntityType>
+  <EntityType Name="Yritus1">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ürituse_nimi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Toimumisaeg" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Koht" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Lisainfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Osavotjads" Relationship="Self.FK_dbo_Osavotjads_dbo_Yritus1_Yritus_ID" FromRole="Yritus1" ToRole="Osavotjads" />
+  </EntityType>
+  <Association Name="FK_dbo_Osavotjads_dbo_Yritus1_Yritus_ID">
+    <End Role="Yritus1" Type="Self.Yritus1" Multiplicity="0..1" />
+    <End Role="Osavotjads" Type="Self.Osavotjad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Yritus1">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Osavotjads">
+        <PropertyRef Name="Yritus_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="YritusEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Osavotjads" EntityType="Self.Osavotjad" />
+    <EntitySet Name="Yritus1" EntityType="Self.Yritus1" />
+    <AssociationSet Name="FK_dbo_Osavotjads_dbo_Yritus1_Yritus_ID" Association="Self.FK_dbo_Osavotjads_dbo_Yritus1_Yritus_ID">
+      <End Role="Yritus1" EntitySet="Yritus1" />
+      <End Role="Osavotjads" EntitySet="Osavotjads" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
